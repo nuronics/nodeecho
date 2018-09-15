@@ -20,7 +20,7 @@ restService.post("/echo", function(req, res) {
     req.body.result.parameters.any
       ? req.body.result.parameters.any
       : "Seems like some problem. Speak again.";
-      process.stdout.write("hello: "+req.body.result.parameters.any);
+      console.log("hello: "req.body.result.parameters.any);
   return res.json({
     speech: speech,
     displayText: speech,
