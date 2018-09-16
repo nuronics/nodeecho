@@ -1,5 +1,6 @@
 "use strict";
 
+
 const express = require("express");
 const bodyParser = require("body-parser");
 
@@ -20,7 +21,7 @@ restService.post("/echo", function(req, res) {
     req.body.result.parameters.echoText
       ? req.body.result.parameters.echoText
       : "Seems like some problem. Speak again.";
-      console.log("hello: "req.body.result.parameters.echoText);
+      console.log("hello: "+req.body.result.parameters.echoText);
   return res.json({
     speech: speech,
     displayText: speech,
