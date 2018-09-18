@@ -1,9 +1,8 @@
-"use strict";
-
-
+'use strict';
 const express = require("express");
 const bodyParser = require("body-parser");
-
+const {dialogflow} = require('actions-on-google');
+const app = dialogflow();
 const restService = express();
 
 restService.use(
@@ -14,7 +13,18 @@ restService.use(
 
 restService.use(bodyParser.json());
 
-restService.post("/echo", function(req, res) {
+restService.post("/webhook", function(req, res) {
+  app.intent('ask_for_permissions_detailed', (conv) => {
+  // Choose one or more supported permissions to request:
+  // NAME, DEVICE_PRECISE_LOCATION, DEVICE_COARSE_LOCATION
+  const options = {
+    context: 'To address you by name and know your location',
+    // Ask for more than one permission. User can authorize all or none.
+    permissions: ['NAME', 'DEVICE_PRECISE_LOCATION'],
+  };
+  conv.ask(new Permission(options));
+});
+  
   var speech =
     req.body.result &&
     req.body.result.parameters &&
