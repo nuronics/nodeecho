@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "testt": "node enable.js"
+    
   },
   "author": "sid",
   "dependencies": {
