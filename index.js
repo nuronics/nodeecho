@@ -23,6 +23,7 @@ restService.post("/webhook", function(req, res) {
     permissions: ['NAME', 'DEVICE_PRECISE_LOCATION'],
   };
   conv.ask(new Permission(options));
+    console.log("am called");
 });
   
   var speech =
